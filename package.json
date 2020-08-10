@@ -2,6 +2,10 @@
   "dependencies": {
     "create-react": "^0.0.0",
     "create-react-app": "^3.4.1",
-    "global": "^4.4.0"
+    "global": "^4.4.0",
+    "typescript": "^3.9.7"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^3.8.0"
   }
 }
