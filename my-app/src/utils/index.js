@@ -58,7 +58,9 @@ export function saveObject(file) {
     bucket.putObject(
       {
         Key: file.name,
-        Body: file,
+        Body: file.src,
+        ContentEncoding: "base64",
+        ContentType: "image/jpeg",
         ACL: "public-read",
       },
       (error, data) => {

@@ -1,5 +1,5 @@
 import * as React from "react";
-import typescript from "typescript";
+import { useEffect } from "react";
 type Coordinates = {
   x: number;
   y: number;
@@ -52,28 +52,28 @@ function App() {
         context.beginPath();
         context.moveTo(start.x, start.y);
         context.lineTo(end.x, end.y);
-        context.strokeStyle = `#${randomColor()}`;
+        context.strokeStyle = `#235199`;
         context.lineWidth = 3;
         context.stroke();
         context.closePath();
       }
     }
 
-    function randomColor(): string {
-      const color = new Array<string>(6);
+    // function randomColor(): string {
+    //   const color = new Array<string>(6);
 
-      for (let i = 0; i < 6; i++) {
-        const val = Math.floor(Math.random() * 16);
+    //   for (let i = 0; i < 6; i++) {
+    //     const val = Math.floor(Math.random() * 16);
 
-        if (val < 10) {
-          color[i] = val.toString();
-        } else {
-          color[i] = String.fromCharCode(val + 87);
-        }
-      }
+    //     if (val < 10) {
+    //       color[i] = val.toString();
+    //     } else {
+    //       color[i] = String.fromCharCode(val + 87);
+    //     }
+    //   }
 
-      return color.join("");
-    }
+    //   return color.join("");
+    // }
 
     if (canvasRef.current) {
       const renderCtx = canvasRef.current.getContext("2d");
@@ -98,7 +98,16 @@ function App() {
       }
     };
   }, [context]);
+  function canvasFill() {
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    ctx.fillStyle = "blue";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
 
+  useEffect(() => {
+    canvasFill();
+  }, []);
   return (
     <div
       style={{
