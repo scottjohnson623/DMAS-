@@ -9,11 +9,12 @@ exports.up = function (knex) {
       table.integer("user_id");
       table.foreign("user_id").references("id").inTable("user");
 
-      table.datetime("date");
+      table.timestamp("created_at").defaultTo(knex.fn.now());
     })
     .createTable("ratings", (table) => {
       table.integer("art_id");
       table.foreign("art_id").references("id").inTable("art");
+      table.integer("rating");
     });
 };
 exports.down = function (knex, Promise) {};

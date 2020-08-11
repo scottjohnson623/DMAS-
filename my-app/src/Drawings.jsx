@@ -1,26 +1,49 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { listObjects, getSingleObject } from "./utils/index.js";
 function Drawings() {
-  let [images, setImages] = useState("");
+  let images = useSelector((state) => {
+    return state.images;
+  });
+  let dispatch = useDispatch();
+
+  //loading photos from AWS
+
   async function getData() {
     let objects = await listObjects();
     let images = objects.map((elem) => {
       return getSingleObject(elem.Key);
     });
-    console.log(images);
     let data = await Promise.all(images);
-    console.log(data);
     data = data.map((elem) => {
       return "data:image/png;base64," + elem;
     });
-    data = data.map((elem) => {
-      return <img src={elem} />;
+    data = data.map((elem, i) => {
+      return (
+        <img
+          id={i + 1}
+          key={i + 1}
+          src={elem}
+          className="art"
+          alt="img"
+          onClick={(e) => {
+            clickedImage(e.target);
+          }}
+        />
+      );
     });
-    setImages(data);
+    dispatch({ type: "SET_IMAGES", payload: data });
   }
   useEffect(() => {
     getData();
   }, []);
+
+  //////////////////////
+  function clickedImage(image) {
+    console.log(image.src);
+    dispatch({ type: "TOGGLE_ALLIMAGESVIEW" });
+    dispatch({ type: "SET_SELECTED_IMAGE", payload: image });
+  }
 
   return <>{images} </>;
 }

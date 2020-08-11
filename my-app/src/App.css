@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  width: 80%;
+  background-color: white;
+  margin: auto;
 }
 
 .App-logo {
@@ -12,10 +15,22 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
-button {
-  width: 100px;
-  height: 100px;
+.artContainer {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  background-color: gray;
+  padding: 30px;
+  margin: auto;
+}
+.art {
+  width: 390px;
+  height: 390px;
+  margin: auto;
+}
+.postbutton {
+  width: 200px;
+  height: 70px;
 }
 .App-header {
   background-color: #282c34;
@@ -39,4 +54,22 @@ button {
   to {
     transform: rotate(360deg);
   }
+}
+
+.drawings {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 500px;
+  margin: auto;
+  padding: 20px;
+}
+.ratingbutton {
+  width: 68px;
+  height: 68px;
+}
+
+.singleImage {
+  height: 760px;
+  width: 760px;
 }

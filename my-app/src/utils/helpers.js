@@ -1,18 +1,20 @@
 import { saveObject } from "./index";
+import axios from "axios";
 
-export function click() {
-  console.log("helo");
+export async function click() {
   var canvas = document.getElementById("canvas");
-  console.log(canvas);
+  let id = await axios.get("/lastid");
+  id = id.data + 1;
   canvas.toBlob(
     (blob) => {
-      saveObject({ name: "test3.png", src: blob }).then(() =>
-        console.log("done")
+      saveObject({ name: `${id}.png`, src: blob }).then(() =>
+        console.log("Uploaded")
       );
     },
     "image/png",
     1.0
   );
+  await axios.post("/art");
 }
 
 export function canvasFill() {
