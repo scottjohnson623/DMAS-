@@ -4,6 +4,7 @@ const initialState = {
   images: [],
   selectedImage: "",
   allImagesView: true,
+  loaded: false,
 };
 
 function reducer(state = initialState, action) {
@@ -19,6 +20,10 @@ function reducer(state = initialState, action) {
     }
     case "SET_ALLIMAGESVIEW": {
       return { ...state, allImagesView: true };
+    }
+    case "SET_LOADED": {
+      console.log("loaded");
+      return { ...state, loaded: true };
     }
     default:
       return state;

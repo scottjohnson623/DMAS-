@@ -13,6 +13,7 @@ export default function Rating() {
           className="myButton"
           onClick={() => {
             addRating(elem);
+            window.location.reload();
           }}
         >
           {elem}

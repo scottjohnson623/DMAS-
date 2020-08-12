@@ -53,6 +53,7 @@ function Drawings() {
       return <div className="artContainer">{elem}</div>;
     });
     dispatch({ type: "SET_IMAGES", payload: datamap });
+    dispatch({ type: "SET_LOADED" });
   }
   useEffect(() => {
     getData();
