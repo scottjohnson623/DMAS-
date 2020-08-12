@@ -3,8 +3,6 @@ const express = require("express");
 const path = require("path");
 const db = require("./knex.js");
 const app = express();
-const axios = require("axios");
-const { read } = require("fs");
 // Serve static assets
 app.use(express.static(path.resolve(__dirname, "..", "build")));
 app.use(express.json());
@@ -18,7 +16,7 @@ app.get("/lastid", async (req, res) => {
 app.post("/art", async (req, res) => {
   let user_id = 1;
   await db("art").insert({ user_id });
-  res.send("inserted");
+  res.redirect("/");
 });
 
 app.get("/ratings/", async (req, res) => {

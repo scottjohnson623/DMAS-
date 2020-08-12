@@ -5,9 +5,10 @@ export async function click() {
   var canvas = document.getElementById("canvas");
   let id = await axios.get("/lastid");
   id = id.data + 1;
+  let name = "photo" + id;
   canvas.toBlob(
     (blob) => {
-      saveObject({ name: `${id}.png`, src: blob }).then(() =>
+      saveObject({ name: `${name}.png`, src: blob }).then(() =>
         console.log("Uploaded")
       );
     },

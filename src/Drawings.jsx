@@ -16,7 +16,6 @@ function Drawings() {
       return getSingleObject(elem.Key);
     });
     let data = await Promise.all(images);
-    console.log(data);
     data = data.map((elem) => {
       return { src: "data:image/png;base64," + elem, avgRating: 0, count: 0 };
     });
@@ -24,7 +23,6 @@ function Drawings() {
     ratings = ratings.data;
 
     ratings.forEach((rating) => {
-      console.log(rating.art_id);
       let avg = rating.avg;
       avg = avg * 100;
       avg = avg - (avg % 1);
@@ -32,7 +30,6 @@ function Drawings() {
       data[rating.art_id - 1]["avgRating"] = avg;
       data[rating.art_id - 1]["count"] = rating.count;
     });
-    console.log(data);
     let datamap = data.map((elem, i) => {
       return (
         <>
@@ -46,7 +43,9 @@ function Drawings() {
               clickedImage(e.target);
             }}
           />
-          Rating: {elem.avgRating}, Votes: {elem.count}
+          <p className="ratings">
+            <b> Avg Rating:</b> {elem.avgRating} <b>Votes:</b> {elem.count}
+          </p>
         </>
       );
     });
@@ -61,7 +60,6 @@ function Drawings() {
 
   //////////////////////
   function clickedImage(image) {
-    console.log(image.src);
     dispatch({ type: "TOGGLE_ALLIMAGESVIEW" });
     dispatch({ type: "SET_SELECTED_IMAGE", payload: image });
   }

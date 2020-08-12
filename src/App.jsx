@@ -5,7 +5,17 @@ import Canvas from "./Canvas.tsx";
 import { click, canvasFill } from "./utils/helpers";
 import { useSelector, useDispatch } from "react-redux";
 import Rating from "./Rating.jsx";
+import { useMediaQuery } from "react-responsive";
+
 export function App() {
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-device-width: 1224px)",
+  });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+  const isTabletOrMobileDevice = useMediaQuery({
+    query: "(max-device-width: 1224px)",
+  });
+
   let allImagesView = useSelector((state) => {
     return state.allImagesView;
   });
@@ -24,7 +34,7 @@ export function App() {
 
       {allImagesView ? (
         <div>
-          <Canvas />
+          {isDesktopOrLaptop ? <Canvas /> : <p>mobile</p>}
           <button className="postbutton" onClick={click}>
             FULL SEND
           </button>

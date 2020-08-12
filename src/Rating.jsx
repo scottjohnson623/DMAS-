@@ -32,6 +32,7 @@ export default function Rating() {
           src={image.src}
           key={image.key}
           id={image.id}
+          alt="pic"
         />
         <br />
         <MakeButtons />
