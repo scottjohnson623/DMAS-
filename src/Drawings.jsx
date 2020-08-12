@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { listObjects, getSingleObject } from "./utils/index.js";
+import axios from "axios";
 function Drawings() {
   let images = useSelector((state) => {
     return state.images;
@@ -15,24 +16,44 @@ function Drawings() {
       return getSingleObject(elem.Key);
     });
     let data = await Promise.all(images);
+    console.log(data);
     data = data.map((elem) => {
-      return "data:image/png;base64," + elem;
+      return { src: "data:image/png;base64," + elem, avgRating: 0, count: 0 };
     });
-    data = data.map((elem, i) => {
+    let ratings = await axios.get("/ratings");
+    ratings = ratings.data;
+
+    ratings.forEach((rating) => {
+      console.log(rating.art_id);
+      let avg = rating.avg;
+      avg = avg * 100;
+      avg = avg - (avg % 1);
+      avg = avg / 100;
+      data[rating.art_id - 1]["avgRating"] = avg;
+      data[rating.art_id - 1]["count"] = rating.count;
+    });
+    console.log(data);
+    let datamap = data.map((elem, i) => {
       return (
-        <img
-          id={i + 1}
-          key={i + 1}
-          src={elem}
-          className="art"
-          alt="img"
-          onClick={(e) => {
-            clickedImage(e.target);
-          }}
-        />
+        <>
+          <img
+            id={i + 1}
+            key={i + 1}
+            src={elem.src}
+            className="art"
+            alt="img"
+            onClick={(e) => {
+              clickedImage(e.target);
+            }}
+          />
+          Rating: {elem.avgRating}, Votes: {elem.count}
+        </>
       );
     });
-    dispatch({ type: "SET_IMAGES", payload: data });
+    datamap = datamap.map((elem) => {
+      return <div className="artContainer">{elem}</div>;
+    });
+    dispatch({ type: "SET_IMAGES", payload: datamap });
   }
   useEffect(() => {
     getData();

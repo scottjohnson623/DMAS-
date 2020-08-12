@@ -10,7 +10,7 @@ export default function Rating() {
     return ratings.map((elem) => {
       return (
         <button
-          className="ratingbutton"
+          className="myButton"
           onClick={() => {
             addRating(elem);
           }}
@@ -32,7 +32,8 @@ export default function Rating() {
           src={image.src}
           key={image.key}
           id={image.id}
-        />{" "}
+        />
+        <br />
         <MakeButtons />
       </div>
     </>

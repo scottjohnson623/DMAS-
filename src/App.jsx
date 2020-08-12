@@ -3,7 +3,7 @@ import Drawings from "./Drawings";
 import "./App.css";
 import Canvas from "./Canvas.tsx";
 import { click, canvasFill } from "./utils/helpers";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Rating from "./Rating.jsx";
 export function App() {
   let allImagesView = useSelector((state) => {
@@ -14,21 +14,23 @@ export function App() {
   }, []);
   return (
     <div className="App">
-      <header className="header">Does My Art Suck?</header>
+      <a className="header" onClick={}>
+        Does My Art Suck?
+      </a>
 
-      <div className="drawings">
-        {allImagesView ? (
-          <div>
-            <Canvas />
-            <button className="postbutton" onClick={click}>
-              SEND IT
-            </button>{" "}
+      {allImagesView ? (
+        <div>
+          <Canvas />
+          <button className="postbutton" onClick={click}>
+            FULL SEND
+          </button>
+          <div className="drawings">
             <Drawings />
           </div>
-        ) : (
-          <Rating />
-        )}
-      </div>
+        </div>
+      ) : (
+        <Rating />
+      )}
     </div>
   );
 }

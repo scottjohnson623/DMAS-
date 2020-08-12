@@ -17,6 +17,9 @@ function reducer(state = initialState, action) {
     case "TOGGLE_ALLIMAGESVIEW": {
       return { ...state, allImagesView: !state.allImagesView };
     }
+    case "SET_ALLIMAGESVIEW": {
+      return { ...state, allImagesView: true };
+    }
     default:
       return state;
   }

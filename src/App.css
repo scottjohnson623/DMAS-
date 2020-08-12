@@ -16,16 +16,15 @@
   }
 }
 .artContainer {
-  position: relative;
-  width: 400px;
-  height: 400px;
+  width: 330px;
+  height: 330px;
   background-color: gray;
-  padding: 30px;
+  padding: 10px;
   margin: auto;
 }
 .art {
-  width: 390px;
-  height: 390px;
+  width: 300px;
+  height: 300px;
   margin: auto;
 }
 .postbutton {
@@ -57,19 +56,42 @@
 }
 
 .drawings {
-  align-items: center;
-  justify-content: center;
+  padding-top: 50px;
   display: flex;
-  width: 500px;
+  width: 1500px;
   margin: auto;
-  padding: 20px;
+  flex-wrap: wrap;
 }
-.ratingbutton {
+
+.myButton {
+  background: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
   width: 68px;
   height: 68px;
+  background-color: #768d87;
+  border-radius: 5px;
+  border: 1px solid #566963;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 9px 9px;
+  text-decoration: none;
+}
+.myButton:hover {
+  background: linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+  background-color: #6c7c7c;
+}
+.myButton:active {
+  position: relative;
+  top: 1px;
 }
 
 .singleImage {
   height: 760px;
   width: 760px;
+}
+.canvas {
+  padding-bottom: 200px;
 }

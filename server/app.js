@@ -21,7 +21,7 @@ app.post("/art", async (req, res) => {
   res.send("inserted");
 });
 
-app.get("/rating/:id", async (req, res) => {
+app.get("/ratings/", async (req, res) => {
   let id = req.params.id;
   let rating = await db("ratings")
     .select("art_id")
