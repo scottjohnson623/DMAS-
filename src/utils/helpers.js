@@ -16,7 +16,6 @@ export async function click() {
     1.0
   );
   await axios.post("/art");
-  window.location.reload();
 }
 
 export function canvasFill() {
