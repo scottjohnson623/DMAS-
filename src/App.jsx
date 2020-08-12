@@ -34,7 +34,7 @@ export function App() {
 
       {allImagesView ? (
         <div>
-          {isDesktopOrLaptop ? <Canvas /> : <p>mobile</p>}
+          <Canvas />
           <button className="postbutton" onClick={click}>
             FULL SEND
           </button>
