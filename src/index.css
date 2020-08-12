@@ -11,6 +11,7 @@
   font-size: 130px;
   color: #b8b8b8;
   padding-bottom: 50px;
+  cursor: pointer;
 }
 body {
   margin: 0;

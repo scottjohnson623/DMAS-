@@ -9,12 +9,16 @@ export function App() {
   let allImagesView = useSelector((state) => {
     return state.allImagesView;
   });
+  const dispatch = useDispatch();
+  let allImages = () => {
+    dispatch({ type: "SET_ALLIMAGESVIEW" });
+  };
   useEffect(() => {
     canvasFill();
   }, []);
   return (
     <div className="App">
-      <a className="header" onClick={}>
+      <a className="header" onClick={allImages}>
         Does My Art Suck?
       </a>
 
