@@ -58,22 +58,6 @@ function App() {
       }
     }
 
-    // function randomColor(): string {
-    //   const color = new Array<string>(6);
-
-    //   for (let i = 0; i < 6; i++) {
-    //     const val = Math.floor(Math.random() * 16);
-
-    //     if (val < 10) {
-    //       color[i] = val.toString();
-    //     } else {
-    //       color[i] = String.fromCharCode(val + 87);
-    //     }
-    //   }
-
-    //   return color.join("");
-    // }
-
     if (canvasRef.current) {
       const renderCtx = canvasRef.current.getContext("2d");
 

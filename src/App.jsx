@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import Drawings from "./Drawings";
-import "./App.css";
-import Canvas from "./Canvas.tsx";
+import Drawings from "./components/Drawings";
+import "./styles/App.css";
+import Canvas from "./components/Canvas.tsx";
 import { click, canvasFill } from "./utils/helpers";
 import { useSelector, useDispatch } from "react-redux";
-import Rating from "./Rating.jsx";
+import Rating from "./components/Rating.jsx";
 import { useMediaQuery } from "react-responsive";
 
 export function App() {

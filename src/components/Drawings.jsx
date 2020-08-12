@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { listObjects, getSingleObject } from "./utils/index.js";
+import { listObjects, getSingleObject } from "../utils/index.js";
 import axios from "axios";
 function Drawings() {
   let images = useSelector((state) => {
