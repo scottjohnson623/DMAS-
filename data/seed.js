@@ -11,3 +11,5 @@ async function seedData() {
   await db("art").insert({ user_id });
   await db("art").insert({ user_id });
 }
+
+seedData();
